@@ -52,7 +52,9 @@ const Navbar = () => {
                         <li>
                             <Link to="dashboard">Dashboard</Link>
                         </li>
-                        <li><a>Logout</a></li>
+                        <li>
+                        <Link to="logout">Logout</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

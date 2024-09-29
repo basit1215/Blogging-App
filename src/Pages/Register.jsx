@@ -272,7 +272,7 @@ import { signUpUser, uploadImage } from '../Config/Firebase/firebasemethods'; //
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
@@ -283,7 +283,8 @@ const Register = () => {
         data.profileImage = imageUrl; // Save image URL in the data object
       }
       await signUpUser(data); // Register user
-      navigate.push('/login'); // Redirect to login page after registration
+      reset();
+      navigate('/login'); // Redirect to login page after registration
     } catch (error) {
       console.error('Error registering user:', error);
     }
