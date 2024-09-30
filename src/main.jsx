@@ -9,6 +9,7 @@ import Dashboard from "./Pages/Dashboard"
 import Profile from "./Pages/Profile"
 import Logout from './Pages/Logout'
 import ProtectedRoutes from './components/ProtectedRoutes'
+import UserBlogs from './Pages/UserBlogs'
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: "logout",
                 element: <Logout />
+            },
+            {
+                path: "userBlogs",
+                element: <UserBlogs/>
             },
             {
                 path: "*",

@@ -1,36 +1,17 @@
-// import React from 'react'
-
-// const Logout = () => {
-//   return (
-//     <div>Logout</div>
-//   )
-// }
-
-// export default Logout
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
-import { signOutUser } from '../Config/Firebase/firebasemethods'; // Import your signOut function
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { signOutUser } from '../Config/Firebase/firebasemethods';
+import { useNavigate } from 'react-router-dom'; 
 
 const Logout = () => {
-  const navigate = useNavigate(); // Use for redirecting after logout
+  const navigate = useNavigate(); 
 
   const handleLogout = async () => {
     try {
-      await signOutUser(); // Call the signOut function
-      console.log('User logged out successfully'); // Log for debugging
-      navigate('/login'); // Navigate back to login page
+      await signOutUser(); 
+      console.log('User logged out successfully'); 
+      navigate('/login'); 
     } catch (error) {
-      console.error('Error logging out:', error); // Handle error
+      console.error('Error logging out:', error);
     }
   };
 
@@ -44,4 +25,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default Logout

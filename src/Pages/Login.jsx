@@ -1,36 +1,18 @@
-// import React from 'react'
-
-// const Login = () => {
-//   return (
-//     <div>Login</div>
-//   )
-// }
-
-// export default Login
-
-
-
-
-
-
-
-
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { loginUser } from '../Config/Firebase/firebasemethods'; // Import your firebase methods
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { loginUser } from '../Config/Firebase/firebasemethods'; 
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const navigate = useNavigate(); // Use useNavigate
+  const navigate = useNavigate(); 
 
   const onSubmit = async (data) => {
     try {
-      const user = await loginUser(data); // Login user
-      console.log('User logged in:', user); // Debugging: Show logged-in user
-      reset(); // Reset form fields after successful login
-      navigate('/dashboard'); // Redirect to home page after login
+      const user = await loginUser(data); 
+      console.log('User logged in:', user); 
+      reset(); 
+      navigate('/dashboard'); 
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -67,4 +49,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login
