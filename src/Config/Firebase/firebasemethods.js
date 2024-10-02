@@ -160,10 +160,3 @@ import {
   
   
   export { auth, db, signUpUser, loginUser, signOutUser, sendData, getData, getAllData, deleteDocument, updateDocument, uploadImage };
-
-
-
-
-
-
-  
