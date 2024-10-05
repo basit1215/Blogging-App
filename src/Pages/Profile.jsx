@@ -1,54 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import app from '../Config/Firebase/firebaseconfig';
-import { getAuth } from 'firebase/auth';
-import { getAllData } from '../Config/Firebase/firebasemethods';
+import { onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { auth } from "../Config/Firebase/firebasemethods";
 
-const Profile = () => {
-  const [userData, setUserData] = useState(null);
-  const auth = getAuth(app);
-  const currentUser = auth.currentUser;
-
-  const fetchUserData = async () => {
-    const fetchedUsers = await getAllData('users'); // Fetch all users
-    const currentUserData = fetchedUsers.find(user => user.email === currentUser.email); // Match current user
-    setUserData(currentUserData); // Set current user data
-    console.log(currentUserData); // Log the current user's data
-  };
-
+function ProfilePage() {
+  const [profile, setProfile] = useState(null);
   useEffect(() => {
-    // Fetch data from local storage
-    const data = localStorage.getItem('userData');
-    if (data) {
-      setUserData(JSON.parse(data)); // Convert string back to object
-    } else {
-      fetchUserData(); // Fetch from Firebase if no local data found
-    }
-  }, [currentUser]); // Dependency on currentUser
-
-  console.log(userData);
-
-  if (!userData) {
-    return <div>Please log in to view your profile.</div>;
-  }
-
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setProfile(user);
+      }
+    });
+  });
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <div className="flex flex-col items-center">
-        <img
-          src={userData.profileImage || 'https://via.placeholder.com/150'}
-          alt="User Profile"
-          className="w-32 h-32 rounded-full mb-4"
-        />
-        <h1 className="text-2xl font-bold mb-2">{userData.fullName || 'No Name Provided'}</h1>
-        <p className="text-gray-600 mb-4">{userData.email}</p>
-      </div>
-      <div className="text-center">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-          Edit Profile
-        </button>
-      </div>
-    </div>
+    <>
+      {profile ? (
+        <div className="flex justify-center gap-8 shadow-2xl w-fit mt-10 p-14 mx-auto items-center flex-col sm:flex-row">
+          <div className="w-full h-full sm:w-[330px] sm:h-[250px]">
+            <img
+              src={profile.photoURL}
+              className="h-full w-full"
+              alt="profilepicture"
+            />
+          </div>
+          <div className="flex flex-col gap-3">
+            <h2> User name : {profile.displayName}</h2>
+            <h2> Email : {profile.email}</h2>
+            <h2> Created At : {profile.metadata.creationTime}</h2>
+            <h2> Last Signin At : {profile.metadata.lastSignInTime}</h2>
+          </div>
+        </div>
+      ) : (
+        "loading"
+      )}
+    </>
   );
-};
-
-export default Profile
+}
+export default ProfilePage

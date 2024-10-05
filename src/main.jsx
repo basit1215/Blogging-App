@@ -17,31 +17,31 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             {
-                path: "",
+                path: "/",
                 element: <Home />
             },
             {
-                path: "login",
+                path: "/login",
                 element: <Login />
             },
             {
-                path: "register",
+                path: "/register",
                 element: <Register />
             },
             {
-                path: "dashboard",
+                path: "/dashboard",
                 element: <ProtectedRoutes component={<Dashboard />}/>
             },
             {
-                path: "profile",
+                path: "/profile",
                 element: <ProtectedRoutes component={<Profile />}/> 
             },
             {
-                path: "logout",
+                path: "/logout",
                 element: <Logout />
             },
             {
-                path: "userBlogs",
+                path: "/userblogs/:userId",
                 element: <UserBlogs/>
             },
             {
