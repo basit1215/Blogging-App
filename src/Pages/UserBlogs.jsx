@@ -40,4 +40,4 @@ const UserBlogs = () => {
   );
 };
 
-export default UserBlogs;
+export default UserBlogs
