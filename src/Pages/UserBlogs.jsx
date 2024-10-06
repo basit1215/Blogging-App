@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { getData } from '../Config/Firebase/firebasemethods'; // Firebase methods se getData import karen
-import { useParams } from 'react-router-dom'; // Params use karne ke liye import
+import { getData } from '../Config/Firebase/firebasemethods'; 
+import { useParams } from 'react-router-dom'; 
 
 const UserBlogs = () => {
-  const { userId } = useParams(); // Params se userId le rahe hain
+  const { userId } = useParams();
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchUserBlogs = async () => {
     setLoading(true);
-    const fetchedBlogs = await getData('blogs', userId); // User-specific blogs fetch kar rahe hain
+    const fetchedBlogs = await getData('blogs', userId); 
     setBlogs(fetchedBlogs);
     setLoading(false);
   };

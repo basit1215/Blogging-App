@@ -18,9 +18,9 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10">
+    <div className="bg-[#b8dfff] min-h-screen py-10">
     <div className="max-w-7xl mx-auto px-4">
-      <h1 className="text-3xl font-bold mb-8 text-center text-blue-600">All Blogs</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-blue-600 underline text-shadow-4xl">All Blogs</h1>
       {loading ? (
         <p className="text-center">Loading...</p>
       ) : blogs.length > 0 ? (
@@ -28,7 +28,7 @@ const Home = () => {
           {blogs.map((blog, index) => (
             <article 
               key={blog.documentId} 
-              className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} bg-white p-6 rounded-lg shadow-md transition-transform duration-200`}
+              className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} bg-gray-100 p-6 rounded-lg shadow-md transition-transform duration-200`}
             >
               <div className="w-1/2">
                 <img

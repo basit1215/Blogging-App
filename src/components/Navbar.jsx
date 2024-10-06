@@ -356,6 +356,7 @@ const Navbar = () => {
     const fetchedUsers = await getAllData('users');
     const currentUserData = fetchedUsers.find((u) => u.email === user.email);
     setUserData(currentUserData);
+    console.log(currentUserData)
   };
 
   useEffect(() => {
