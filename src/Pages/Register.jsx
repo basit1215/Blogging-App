@@ -25,9 +25,9 @@ const Register = () => {
         password: data.password,
         userProfile: userProfileUrl,
       });
-      
+
       console.log("User registered successfully: ", registerUserData);
-      reset(); 
+      reset();
       setLoading(false);
 
       navigate('/dashboard');
@@ -40,14 +40,15 @@ const Register = () => {
 
   return (
     <div>
-      <section className="bg-[#b8dfff] py-16  px-4 sm:px-6 lg:px-8  h-[79.7vh]">
-        <div className="login-section max-w-md mx-auto mt-[180px] lg:mt-[100px] first:md:mt-[70px] bg-gray-100 shadow-lg p-6 rounded-lg">
+      <section className="bg-[#b8dfff] py-1 pb-16  px-4 sm:px-6 lg:px-8 ">
+        <div className="login-section max-w-md mx-auto  lg:mt-[100px] first:md:mt-[70px] bg-gray-100  p-6 rounded-xl shadow-xl">
           <form onSubmit={handleSubmit(registerUser)} className="flex flex-col gap-4">
+            <h1 className="text-shadow text-4xl font-bold mb-4 text-center text-blue-600 ">Register</h1>
             <div>
               <label className="block">
-                <span className='text-sm'>Full Name</span>
+                <span className='text-base text-blue-500 pl-1'>Full Name</span>
                 <input
-                  className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className='w-full h-12 border border-gray-300 rounded-xl pl-5 mt-2 focus:bg-gray-50 focus:border-blue-500 focus:outline-none'
                   type="text"
                   placeholder="Full Name"
                   {...register("fullName", {
@@ -67,17 +68,16 @@ const Register = () => {
                   })}
                 />
               </label>
-              {errors.fullName && <span className='text-red-600 text-sm'>{errors.fullName.message}</span>}
+              {errors.fullName && <span className='text-red-600 text-sm pl-1'>{errors.fullName.message}</span>}
             </div>
 
             <div>
               <label className="block">
-                <span className='text-sm'>Email</span>
+                <span className='text-base text-blue-500 pl-1'>Email</span>
                 <input
                   type="email"
                   placeholder="Email"
-                  className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  {...register("email", {
+                  className='w-full h-12 border border-gray-300 rounded-xl pl-5 mt-2  focus:bg-gray-50 focus:border-blue-500 focus:outline-none'                   {...register("email", {
                     required: "Email is required",
                     pattern: {
                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -86,45 +86,47 @@ const Register = () => {
                   })}
                 />
               </label>
-              {errors.email && <span className='text-red-600 text-sm'>{errors.email.message}</span>}
+              {errors.email && <span className='text-red-600 text-sm pl-1'>{errors.email.message}</span>}
             </div>
 
             <div>
               <label className="block">
-                <span className='text-sm'>Password</span>
+                <span className='text-base text-blue-500 pl-1'>Password</span>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className='w-full h-12 border border-gray-300 rounded-xl pl-5 mt-2 focus:bg-gray-50 focus:border-blue-500 focus:outline-none'
                   {...register('password', { required: 'Password is required' })}
                 />
               </label>
-              {errors.password && <span className="text-red-500">{errors.password.message}</span>}
+              {errors.password && <span className="text-red-600 text-sm pl-1">{errors.password.message}</span>}
             </div>
 
             <div>
               <label className="block">
-                <span className='text-sm'>Profile Image</span>
+                <span className='text-base text-blue-500 pl-1'>Profile Image</span>
                 <input
                   type="file"
                   ref={fileRef}
-                  className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className='w-full h-12 border border-gray-300 rounded-xl pl-5 pt-2 mt-2 focus:bg-gray-50 focus:border-blue-500 focus:outline-none'
+                  {...register("profile", { required: "Profile image is required" })}
                 />
               </label>
+              {errors.profile && <span className='text-red-600 text-sm pl-1'>{errors.profile.message}</span>}
             </div>
 
             <div id="loadingDiv" className="mt-4 text-center">
               <button
                 type="submit"
-                className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600"
+                className="bg-blue-500 text-white py-2 px-6 rounded-lg w-full hover:bg-blue-600"
                 disabled={loading}
               >
                 {loading ? 'Registering...' : 'Register'}
               </button>
             </div>
 
-            <Link to='/login' className="text-center text-blue-500 hover:underline mt-4">
-              Already a user? Please login
+            <Link to='/login' className="text-left text-sm text-blue-500 hover:underline pl-1">
+            Already have an account? Log in
             </Link>
           </form>
         </div>

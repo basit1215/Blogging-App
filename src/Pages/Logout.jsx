@@ -21,32 +21,12 @@ const Logout = () => {
         <h2 className="text-2xl sm:text-3xl font-bold">Are you sure?</h2>
         <button
           onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full max-w-[150px]"
-        >
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full max-w-[150px]" >
           Log Out
         </button>
       </div>
     </div>
   );
-  
-  
-  
-
 };
 
 export default Logout
-  // return (
-  //   <>
-  //     <div>
-  //       <div>
-  //         <h2>Are you sure?</h2>
-  //       </div>
-
-  //       <div>
-  //         <button
-  //           onClick={handleLogout}
-  //           className="bg-red-500 text-white p-2 rounded hover:bg-red-600" >Log Out</button>
-  //       </div>
-  //     </div>
-  //   </>
-  // );
