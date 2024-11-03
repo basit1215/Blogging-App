@@ -95,7 +95,6 @@ const Dashboard = () => {
       <br />
       <br />
 
-
       <h1 className='text-shadow text-center font-bold text-4xl py-5 text-blue-700 '>Your Blogs</h1>
 
       {loading ? (
